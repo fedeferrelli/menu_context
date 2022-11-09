@@ -54,7 +54,7 @@ function Data() {
     
     return (
 
-        <div className="w-full p-8 bg-gray-100 min-h-screen">
+        <div className="w-full px-2 bg-gray-100 min-h-screen">
             <div>
                 <input className="w-40 focus:w-full p-2 rounded-md mb-4 ease-in-out duration-700 outline-none
                 border-gray-100 border bg-white text-gray-700 font-extralight" onChange={(e)=>setSearch(e.target.value)} type='text' placeholder='Buscar'/>
@@ -81,7 +81,7 @@ function Data() {
                 
                const filtro = filteredData.filter(dish=>dish.categoria===cat)
                               
-                return(<div key={cat} className="flex flex-col">
+                return(<div key={cat} className="w-full flex flex-col bg-white rounded-lg shadow mb-3 p-2">
 
                     <div className="text-left sm:text-center text-gray-700 font-semibold text-3xl sm:text-4xl py-3" id={cat}>{cat} <small className="font-normal">({filtro.length})</small>  </div>
 
@@ -95,7 +95,6 @@ function Data() {
                         )})
                     }
                     
-                    <hr className="w-full  py-3"/>
                      </section>
                     
                      </div>)
