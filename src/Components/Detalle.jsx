@@ -30,7 +30,7 @@ function Detalle() {
 
       <h1 className="text-2xl font-bold text-left capitalize text-gray-600 mt-3"> {handlePrice(selectedDish.precio)}</h1>
          
-      <p className="text-left text-gray-500 mt-2 text-sm max-w-prose"> {selectedDish.descripcion}</p>
+      <p className="text-left text-gray-500 mt-2 text-md max-w-prose"> {selectedDish.descripcion}</p>
       </div>
 
       </div>

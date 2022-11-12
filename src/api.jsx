@@ -1,8 +1,13 @@
-import getDishes from "./firebase/firebase";
+import {getDishes, getCategories} from "./firebase/firebase";
 
 export const fetchData = {
-    fetch: async () => {
+    fetchMenuData: async () => {
         const response = await getDishes();
+        return response;
+      },
+
+      fetchCategories: async () => {
+        const response = await getCategories();
         return response;
       }
 };

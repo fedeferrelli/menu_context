@@ -10,17 +10,29 @@ export const DataContext = createContext()
 export const DataProvider = ({children}) => {
     
     const [data, setData] = useState()
+    const [categoriesData, setCategoriesData] = useState()
     const [selectedDish, setSelectedDish] = useState(null)
     const [showLoading, setShowLoading] = useState(true)
 
-    useEffect(() => {
-        const getData = async () => {
-          const dataApi = await fetchData.fetch();
+    const getData = async () => {
+        const dataApi = await fetchData.fetchMenuData();
+  
+        setData(dataApi);
+        setShowLoading(false)
+        
+      };
+
+      const getCategories = async () => {
+        const dataApi = await fetchData.fetchCategories();
+  
+        setCategoriesData(dataApi.sort((a, b) => {return (+a.posicion > +b.posicion) ? 1 : -1}));
+        
+        
+      };
     
-          setData(dataApi);
-          setShowLoading(false)
-          
-        };
+    
+    useEffect(() => {
+        getCategories();
         getData();
       }, []);
 
@@ -31,7 +43,7 @@ export const DataProvider = ({children}) => {
 
 
     return (
-        <DataContext.Provider value={{data, selectedDish, selectDish, showLoading, setShowLoading}}>
+        <DataContext.Provider value={{data, categoriesData, selectedDish, selectDish, showLoading, setShowLoading}}>
             {children}
         </DataContext.Provider>
     )

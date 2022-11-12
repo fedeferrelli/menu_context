@@ -8,16 +8,13 @@ import {useNavigate, Link} from 'react-router-dom';
 
 function Data() {
     
-    const {data, selectDish, showLoading} = useContext(DataContext)
+    const {data, categoriesData, selectDish, showLoading} = useContext(DataContext)
+
 
     const [filteredData, setFilteredData] = useState()
     const [search, setSearch] = useState("")
     const [categories, setCategories] = useState()
-
-    console.log(filteredData)
-    console.log(categories)
-
-    
+  
 
     const navigate = useNavigate()
 
@@ -29,7 +26,9 @@ function Data() {
         const getFilteredData = () =>{
             const filteredData = data.filter(dish=>dish.plato.toLowerCase().includes(search.toLowerCase()) || dish.descripcion.toLowerCase().includes(search.toLowerCase()) || dish.categoria.toLowerCase().includes(search.toLowerCase())) 
             setFilteredData(filteredData.sort(sortByStock))
-            setCategories([...new Set(filteredData.map(dish=> {return dish.categoria}))])
+            setCategories(categoriesData.map(cat=> {return cat.nueva_categoria})
+                
+                )
         }
        {data && getFilteredData()} 
     }, [data, search])
@@ -54,7 +53,7 @@ function Data() {
     
     return (
 
-        <div className="w-full px-2 bg-gray-100 min-h-screen">
+        <div className="w-full px-2 bg-gray-800 min-h-screen">
             <div>
                 <input className="sm:w-40 w-full focus:w-full p-2 rounded-full my-4 ease-in-out duration-700 outline-none
                 border-gray-100 border bg-white text-gray-700 font-extralight" onChange={(e)=>setSearch(e.target.value)} type='text' placeholder='Buscar'/>
@@ -66,7 +65,9 @@ function Data() {
 
 <section className="w-full flex flex-wrap justify-evenly sm:justify-start mt-2 mb-6 gap-2 sm:gap-6">
             {categories?.map(cat=>{
-                return(<a key={cat} href={`#${cat}`} className="px-3 py-2 shadow text-gray-600 rounded-full bg-slate-200 text-sm scroll-smooth">{cat}</a>)
+                if (filteredData.map(dish=>{return (dish.categoria)}).includes(cat))
+                {
+                return(<a key={cat} href={`#${cat}`} className="px-3 py-2 shadow text-gray-600 rounded-full bg-slate-200 text-sm scroll-smooth">{cat}</a>)}
             })}
             </section>
 
@@ -80,8 +81,8 @@ function Data() {
            categories?.map((cat)=>{
                 
                const filtro = filteredData.filter(dish=>dish.categoria===cat)
-                              
-                return(<div key={cat} id={cat} className="w-full flex flex-col bg-white rounded-lg shadow mb-3 p-2">
+
+               if (filtro.length !== 0) { return(<div key={cat} id={cat} className="w-full flex flex-col bg-white rounded-lg shadow mb-3 p-2">
 
                     <div className="text-left sm:text-center text-gray-700 font-semibold text-3xl sm:text-4xl py-3">{cat} <small className="font-normal">({filtro.length})</small>  </div>
 
@@ -98,6 +99,7 @@ function Data() {
                      </section>
                     
                      </div>)
+           }
                     
                 
             })
