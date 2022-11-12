@@ -24,7 +24,8 @@ function Data() {
 
     useEffect(() => {
         const getFilteredData = () =>{
-            const filteredData = data.filter(dish=>dish.plato.toLowerCase().includes(search.toLowerCase()) || dish.descripcion.toLowerCase().includes(search.toLowerCase()) || dish.categoria.toLowerCase().includes(search.toLowerCase())) 
+            const filteredData = data.filter(
+                dish=>dish.plato.toLowerCase().includes(search.toLowerCase()) || dish.descripcion.toLowerCase().includes(search.toLowerCase()) || dish.categoria.toLowerCase().includes(search.toLowerCase())|| dish.tags.toLowerCase().includes(search.toLowerCase())) 
             setFilteredData(filteredData.sort(sortByStock))
             setCategories(categoriesData.map(cat=> {return cat.nueva_categoria})
                 
@@ -58,7 +59,7 @@ function Data() {
             {showLoading ? 
         <Loading/>:
 
-<section className="" >
+<section className="w-11/12 m-auto" >
 <div>
                 <input className="sm:w-40 w-full focus:w-full p-2 px-3 rounded-full my-4 ease-in-out duration-700 outline-none
                 border-gray-100 border bg-white text-gray-700 font-extralight" onChange={(e)=>setSearch(e.target.value)} type='text' placeholder='Buscar'/>
@@ -84,7 +85,7 @@ function Data() {
 
                if (filtro.length !== 0) { return(<div key={cat} id={cat} className="w-full flex flex-col bg-white rounded-lg shadow mb-3 p-2">
 
-                    <div className="text-left sm:text-center text-gray-700 font-semibold text-3xl sm:text-4xl py-3">{cat} <small className="font-normal">({filtro.length})</small>  </div>
+                    <div className="text-left sm:text-center text-gray-700 font-semibold text-3xl sm:text-4xl py-3">{cat} </div>
 
                     <section className="flex justify-start flex-wrap gap-4"> 
                     {
