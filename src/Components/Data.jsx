@@ -3,7 +3,7 @@ import { DataContext } from '../context/Context'
 import Loading from './Loading';
 import ShowMenu from './ShowMenu';
 
-import {useNavigate, Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 
 function Data() {
@@ -53,16 +53,16 @@ function Data() {
     
     return (
 
-        <div className="w-full px-2 bg-gray-800 min-h-screen">
-            <div>
-                <input className="sm:w-40 w-full focus:w-full p-2 rounded-full my-4 ease-in-out duration-700 outline-none
-                border-gray-100 border bg-white text-gray-700 font-extralight" onChange={(e)=>setSearch(e.target.value)} type='text' placeholder='Buscar'/>
-            </div>
+        <div className="w-full px-2 bg-gray-700 min-h-screen flex flex-col">
+           
             {showLoading ? 
         <Loading/>:
 
 <section className="" >
-
+<div>
+                <input className="sm:w-40 w-full focus:w-full p-2 px-3 rounded-full my-4 ease-in-out duration-700 outline-none
+                border-gray-100 border bg-white text-gray-700 font-extralight" onChange={(e)=>setSearch(e.target.value)} type='text' placeholder='Buscar'/>
+            </div>
 <section className="w-full flex flex-wrap justify-evenly sm:justify-start mt-2 mb-6 gap-2 sm:gap-6">
             {categories?.map(cat=>{
                 if (filteredData.map(dish=>{return (dish.categoria)}).includes(cat))

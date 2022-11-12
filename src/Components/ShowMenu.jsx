@@ -5,7 +5,7 @@ function ShowMenu({dish, handlePrice, goToSelectedDish}) {
         <section className="">
 
 
-        <div className="w-full sm:w-[250px] bg-white sm:bg-transparent rounded-md sm:rounded-b-none sm:shadow-xl hover:shadow-gray-500 hover:shadow-lg sm:border sm:border-slate-500/25 ease-in-out duration-500 cursor-pointer overflow-hidden relative flex sm:flex-col" onClick={()=>goToSelectedDish(dish.id, dish.existencia)} key={dish.id}>
+        <div className="w-full sm:w-[250px] bg-white sm:bg-transparent rounded-md sm:rounded-b-none sm:shadow-xl sm:hover:shadow-gray-500 sm:hover:shadow-lg sm:border sm:border-slate-500/25 ease-in-out duration-500 cursor-pointer overflow-hidden relative flex sm:flex-col" onClick={()=>goToSelectedDish(dish.id, dish.existencia)} key={dish.id}>
         
         <div className="p-1 sm:p-0 sm:m-auto w-1/3 h-auto sm:w-auto sm:rounded-none order-2 ">
         <img className="sm:m-auto w-full h-auto border border-gray-400/50 sm:border-none sm:w-auto rounded-lg sm:rounded-none" src={dish?.image}

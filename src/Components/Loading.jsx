@@ -2,8 +2,10 @@ import React from 'react'
 
 function Loading() {
     return (
-        <div style={{background:"rgb(0,0,0)", width:'100%', height:'100%'}}>
-            Loading, carajo
+        <div className=" m-auto w-12 h-12 border-8 animate-spin border-gray-200 border-t-gray-200/25 rounded-full">
+
+
+
         </div>
     )
 }
