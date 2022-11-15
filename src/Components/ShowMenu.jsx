@@ -1,15 +1,31 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 function ShowMenu({dish, handlePrice, goToSelectedDish}) {
+
+    const [showDescriptionOnBigScreens, setshowDescriptionOnBigScreens] = useState(false)
+
+    const WIDTH = window.screen.width;
+
+    const handleOnlick = (id, existencia) =>{
+        if(WIDTH>640){
+            setshowDescriptionOnBigScreens(!showDescriptionOnBigScreens)
+        } 
+        else {goToSelectedDish(id, existencia)}
+    }
+
     return (
         <section className="">
 
 
-        <div className="w-full sm:w-[250px] bg-white sm:bg-transparent rounded-md sm:rounded-b-none sm:shadow-xl sm:hover:shadow-gray-500 sm:hover:shadow-lg sm:border sm:border-slate-500/25 ease-in-out duration-500 cursor-pointer overflow-hidden relative flex sm:flex-col" onClick={()=>goToSelectedDish(dish.id, dish.existencia)} key={dish.id}>
+        <div className="w-full sm:w-[250px] bg-white sm:bg-transparent rounded-md sm:rounded-b-none sm:shadow-xl sm:hover:shadow-gray-500 sm:hover:shadow-lg sm:border sm:border-slate-500/25 ease-in-out duration-500 cursor-pointer overflow-hidden relative flex sm:flex-col" onClick={()=>handleOnlick(dish.id, dish.existencia)} key={dish.id}>
         
-        <div className="p-1 sm:p-0 sm:m-auto w-1/3 min-w-[100px] h-auto sm:w-auto sm:rounded-none order-2 ">
+        <div className="p-1 sm:p-0 sm:m-auto w-1/3 min-w-[100px] h-auto sm:w-auto sm:rounded-none order-2 relative">
         <img className="sm:m-auto w-full h-auto border border-gray-400/50 sm:border-none sm:w-auto rounded-lg sm:rounded-none" src={dish?.image}
-          alt={`imagen para ${dish?.title}`} ></img> </div>    
+          alt={`imagen para ${dish?.title}`} ></img> 
+          {showDescriptionOnBigScreens ? 
+          <span className="absolute flex top-0 bottom-0 right-0 left-0 bg-gray-800/80"><p className="m-auto max-w-prose text-center text-gray-200 px-2">{dish.descripcion}</p></span>
+          : null }
+          </div>    
         <div className="p-2 w-full sm:order-2">  
         <h1 className="text-xl text-left capitalize font-semibold text-gray-600"> {dish.plato}</h1>
         <div 
@@ -26,7 +42,7 @@ function ShowMenu({dish, handlePrice, goToSelectedDish}) {
         </div>
 
         </div>
-        <hr className="my-2"/>
+        <hr className="my-2 sm:hidden"/>
         </section>
     )
 }

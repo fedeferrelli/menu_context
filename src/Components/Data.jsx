@@ -14,7 +14,7 @@ function Data() {
     const [filteredData, setFilteredData] = useState()
     const [search, setSearch] = useState("")
     const [categories, setCategories] = useState()
-  
+
 
     const navigate = useNavigate()
 
@@ -38,6 +38,7 @@ function Data() {
 
     const goToSelectedDish = (dish, stock) =>{
         if(stock==='si'){
+
         selectDish(dish)
         navigate('/detailedDish')
     }
@@ -85,14 +86,15 @@ function Data() {
 
                if (filtro.length !== 0) { return(<div key={cat} id={cat} className="w-full flex flex-col bg-white rounded-lg shadow mb-3 p-2">
 
-                    <div className="text-left sm:text-center text-gray-700 font-semibold text-3xl sm:text-4xl py-3">{cat} </div>
+                    <div className="sm:text-left  text-gray-700 font-semibold text-3xl sm:text-4xl text-center py-3">{cat} </div>
 
                     <section className="flex justify-start flex-wrap gap-4"> 
                     {
                     filtro.map((dish)=>{
                         return(
                         <div key={dish.id} className="sm:w-auto">
-                        <ShowMenu dish={dish} handlePrice={handlePrice} goToSelectedDish={goToSelectedDish}/>
+                        <ShowMenu dish={dish} handlePrice={handlePrice} goToSelectedDish={goToSelectedDish}
+                        />
                         </div>
                         )})
                     }

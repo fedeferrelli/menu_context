@@ -14,7 +14,7 @@ function Detalle() {
   }
 
     return (
-      <section className="pb-4">
+      <section className="pb-4 px-10">
 
 
       <div className="w-full ">
