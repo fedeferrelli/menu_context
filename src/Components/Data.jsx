@@ -59,7 +59,7 @@ function Data() {
             {showLoading ? 
         <Loading/>:
 
-<section className="w-11/12 m-auto" >
+<section className="p-1 m-auto" >
 <div>
                 <input className="sm:w-40 w-full focus:w-full p-2 px-3 rounded-full my-4 ease-in-out duration-700 outline-none
                 border-gray-100 border bg-white text-gray-700 font-extralight" onChange={(e)=>setSearch(e.target.value)} type='text' placeholder='Buscar'/>
