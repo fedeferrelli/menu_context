@@ -60,7 +60,7 @@ function Data() {
             {showLoading ? 
         <Loading/>:
 
-<section className="p-1 m-auto" >
+<section className="p-1 m-auto w-full" >
 <div>
                 <input className="sm:w-40 w-full focus:w-full p-2 px-3 rounded-full my-4 ease-in-out duration-700 outline-none
                 border-gray-100 border bg-white text-gray-700 font-extralight" onChange={(e)=>setSearch(e.target.value)} type='text' placeholder='Buscar'/>
@@ -84,9 +84,9 @@ function Data() {
                 
                const filtro = filteredData.filter(dish=>dish.categoria===cat)
 
-               if (filtro.length !== 0) { return(<div key={cat} id={cat} className="w-full flex flex-col bg-white rounded-lg shadow mb-3 p-2">
+               if (filtro.length !== 0) { return(<div key={cat} id={cat} className="w-full flex flex-col bg-white sm:bg-transparent rounded-lg shadow sm:shadow-none mb-3 p-2">
 
-                    <div className="sm:text-left  text-gray-700 font-semibold text-3xl sm:text-4xl text-center py-3">{cat} </div>
+                    <div className="sm:text-left  text-gray-700 sm:text-gray-200 font-semibold text-3xl sm:text-4xl text-center py-3">{cat} </div>
 
                     <section className="flex justify-start flex-wrap gap-4"> 
                     {
