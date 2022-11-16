@@ -17,13 +17,13 @@ function ShowMenu({dish, handlePrice, goToSelectedDish}) {
         <section className="">
 
 
-        <div className="w-full sm:w-[250px] bg-gray-100 rounded-md sm:rounded-b-none sm:shadow-xl sm:hover:shadow-gray-900 sm:hover:shadow-lg sm:border sm:border-gray-800/75 ease-in-out duration-500 cursor-pointer overflow-hidden relative flex sm:flex-col" onClick={()=>handleOnlick(dish.id, dish.existencia)} key={dish.id}>
+        <div className="w-full sm:w-[250px] sm:h-[420px]  sm:bg-gray-100 rounded-md sm:rounded-b-none sm:shadow-xl sm:hover:shadow-gray-900 sm:hover:shadow-lg sm:border sm:border-gray-800/75 ease-in-out duration-500 cursor-pointer overflow-hidden relative flex sm:flex-col" onClick={()=>handleOnlick(dish.id, dish.existencia)} key={dish.id}>
         
-        <div className="p-1 sm:p-0 sm:m-auto w-1/3 min-w-[100px] h-auto sm:w-auto sm:rounded-none order-2 relative">
+        <div className="p-1 sm:p-0 w-1/3 min-w-[100px] h-auto sm:w-auto sm:rounded-none order-2 relative">
         <img className="sm:m-auto w-full h-auto border border-gray-400/50 sm:border-none sm:w-auto rounded-lg sm:rounded-none" src={dish?.image}
           alt={`imagen para ${dish?.title}`} ></img> 
           {showDescriptionOnBigScreens ? 
-          <span className="absolute flex top-0 bottom-0 right-0 left-0 bg-gray-800/80"><p className="m-auto max-w-prose text-center text-gray-200 px-2">{dish.descripcion}</p></span>
+          <span className="absolute flex top-0 bottom-0 right-0 left-0 bg-gray-800/80 overflow-auto"><p className="m-auto max-w-prose text-center text-gray-200 px-2 ">{dish.descripcion}</p></span>
           : null }
           </div>    
         <div className="p-2 w-full sm:order-2">  
