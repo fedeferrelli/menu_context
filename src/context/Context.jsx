@@ -16,8 +16,7 @@ export const DataProvider = ({children}) => {
 
     const getData = async () => {
         const dataApi = await fetchData.fetchMenuData();
-  
-        setData(dataApi);
+        setData(dataApi.filter(dish=>dish.existencia === 'si'));
         setShowLoading(false)
         
       };
@@ -38,7 +37,7 @@ export const DataProvider = ({children}) => {
 
     
     const selectDish = (dishId) =>{
-        setSelectedDish(data.filter(dish=>dish.id===dishId)[0])
+        setSelectedDish(data.filter(dish=>dish.plato===dishId)[0])
         }
 
 

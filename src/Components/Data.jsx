@@ -37,11 +37,9 @@ function Data() {
 
 
     const goToSelectedDish = (dish, stock) =>{
-        if(stock==='si'){
-
+        
         selectDish(dish)
         navigate('/detailedDish')
-    }
     }
 
     const handlePrice = (string) =>{
